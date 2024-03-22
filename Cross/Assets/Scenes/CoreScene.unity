@@ -132,7 +132,8 @@ GameObject:
   - component: {fileID: 77379992}
   - component: {fileID: 77379991}
   - component: {fileID: 77379995}
-  m_Layer: 5
+  - component: {fileID: 77379996}
+  m_Layer: 6
   m_Name: FadeScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,6 +235,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &77379996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77379990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1664a24f1ab48a28331c98870d6b0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeCanvasGroup: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +543,7 @@ GameObject:
   - component: {fileID: 1891790385}
   - component: {fileID: 1891790387}
   - component: {fileID: 1891790386}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
