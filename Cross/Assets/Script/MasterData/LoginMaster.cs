@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace MasterData
@@ -17,5 +17,25 @@ namespace MasterData
         public int RefreshLoginMinute => refreshLoginMinute;
         public int RefreshLoginSecond => refreshLoginSecond;
         public string RefreshLoginMessage => refreshLoginMessage;
+        
+        private static LoginMaster cache = null;
+        public static async Awaitable<LoginMaster> Load()
+        {
+            if (cache != null)
+                return cache;
+
+            CancellationTokenSource cancellationTokenSource = new();
+            try
+            {
+                cache = await Resources.LoadAsync<LoginMaster>("MasterData/LoginMaster")
+                    .ToUniTask(cancellationToken: cancellationTokenSource.Token) as LoginMaster;
+            }
+            catch (Exception e)
+            {
+                cancellationTokenSource.Cancel();
+                cancellationTokenSource.Dispose();
+            }
+            return cache;    
+        }
     }
 }
