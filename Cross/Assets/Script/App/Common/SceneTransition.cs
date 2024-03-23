@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +12,7 @@ namespace App.Common
     
     public class SceneTransition
     {
-        private Fade fade = ComponentLocator.Get<Fade>();
+        private readonly Fade fade = ComponentLocator.Get<Fade>();
 
         public async void ChangeScene(string sceneName)
         {

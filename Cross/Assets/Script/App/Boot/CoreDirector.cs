@@ -1,5 +1,4 @@
-﻿using System;
-using App.Common;
+﻿using App.Common;
 using Core;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

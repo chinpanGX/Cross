@@ -7,7 +7,6 @@ using MasterData;
 using Repository.GameTime;
 using UnityEngine;
 using R3;
-using Script.App.Boot;
 
 namespace App.Title
 {
