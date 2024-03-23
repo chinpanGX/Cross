@@ -9,12 +9,6 @@ namespace App.Common
     {
         [SerializeField] private CanvasGroup fadeCanvasGroup;
         
-        /*
-         * 実装機能
-         * フェードイン　async await
-         * フェードアウト async await
-         */
-
         public async Awaitable FadeIn()
         {
             await fadeCanvasGroup.DOFade(1f, 1f);

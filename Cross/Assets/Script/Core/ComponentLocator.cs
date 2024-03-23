@@ -5,6 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace Core
 {
+
     public static class ComponentLocator
     {
         private static readonly Dictionary<Type, IStaticCache> cache = new();

@@ -1,24 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 namespace App.Common
 {
-    public class SceneTransition : MonoBehaviour
+    public class SceneTransition
     {
-        [SerializeField] private Fade fade;
-        
-        /*
-         * 実装機能　async await　
-         * フェードイン開始
-         * 現在のシーンのアンロード
-         * リソースのアンロード
-         * 次のシーンをロード
-         * フェードアウト
-         */
+        private Fade fade = ComponentLocator.Get<Fade>();
+
         public async Awaitable ChangeScene(string sceneName)
         {
             await fade.FadeIn();
+            
         }
     }
 }
