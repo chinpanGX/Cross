@@ -8,15 +8,22 @@ namespace App.Common
     internal class Fade : MonoBehaviour
     {
         [SerializeField] private CanvasGroup fadeCanvasGroup;
+        [Range(0.1f, 1.0f)]
+        [SerializeField] private float durationSecond;
         
-        public async Awaitable FadeIn()
+        public async UniTask FadeIn()
         {
-            await fadeCanvasGroup.DOFade(1f, 1f);
+            await fadeCanvasGroup.DOFade(1f, durationSecond);
         }
 
-        public async Awaitable FadeOut()
+        public async UniTask FadeOut()
         {
-            await fadeCanvasGroup.DOFade(0f, 1f);
+            await fadeCanvasGroup.DOFade(0f, durationSecond);
+        }
+
+        public void BlackOut()
+        {
+            fadeCanvasGroup.alpha = 1;
         }
     }
 }
