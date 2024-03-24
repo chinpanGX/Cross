@@ -9,7 +9,7 @@ namespace Repository.SaveData
     {
         bool Load();
         void Register(string userName);
-        void Save(PlayerProfile source);
+        void ApplyLoginTime();
         PlayerProfile Get();
     }
 
@@ -60,7 +60,7 @@ namespace Repository.SaveData
             Save(profile);
         }
         
-        public void Save(PlayerProfile source)
+        void Save(PlayerProfile source)
         {
             var userId = profile.UserId;
             var beginGameTime = profile.BeginGameTime;

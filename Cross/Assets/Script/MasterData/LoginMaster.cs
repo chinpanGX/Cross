@@ -38,4 +38,12 @@ namespace MasterData
             return cache;    
         }
     }
+
+    public static class LoginMasterExtension
+    {
+        public static DateTime ToDateTime(this LoginMaster master, DateTime nowTime)
+        {
+            return new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, master.RefreshLoginHour, master.RefreshLoginMinute, master.RefreshLoginSecond);            
+        }
+    }
 }

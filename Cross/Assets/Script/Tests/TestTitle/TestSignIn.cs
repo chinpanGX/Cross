@@ -12,7 +12,7 @@ namespace Test.Title
             var profile = new TestPlayerProfile();
             profile.Register();
             var a = profile.Save();
-            var b = profile.UserName + "," + profile.UserId + "," + profile.BeginGameTime + "," + profile.LastLoginTime; 
+            var b = profile.UserName + "," + profile.UserId + "," + profile.BeginGameTime.ToShortString() + "," + profile.LastLoginTime.ToShortString(); 
             Assert.That(a, Is.EqualTo(b));
         }
 

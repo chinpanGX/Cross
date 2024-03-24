@@ -1,11 +1,14 @@
+using System;
 
 namespace Repository.GameTime
 {
-    internal class GameTimeDirector
+    public  class GameTimeDirector
     {
-        public GameTimeDirector()
+        public static GameTimeData GameTimeData;
+        
+        public static void Init()
         {
-
+            GameTimeData = new GameTimeData(DateTime.Now);
         }
     }
 }

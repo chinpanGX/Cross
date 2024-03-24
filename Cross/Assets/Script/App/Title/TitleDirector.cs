@@ -26,11 +26,13 @@ namespace App.Title
         {
             fade = ComponentLocator.Get<Fade>();
             updatablePresenter = new UpdatablePresenter();
+            
             var loginMaster = await LoginMaster.Load();
             var loginRefreshTimeData =
-                new LoginRefreshTimeData(loginMaster.RefreshLoginHour, loginMaster.RefreshLoginMinute, loginMaster.RefreshLoginSecond);
-            gameTimeRepository = new GameTimeLocalRepository(loginRefreshTimeData);
+                new LoginRefreshTimeData(loginMaster.ToDateTime(DateTime.Now));
+            
             saveDataRepository = new PlayerProfileSaveDataLocalRepository(new EncryptedPlayerPrefs());
+            gameTimeRepository = new GameTimeLocalRepository(loginRefreshTimeData);
             Push("Title");
             this.UpdateAsObservable().Subscribe(_ => updatablePresenter.Execute()).AddTo(gameObject);
         }
@@ -38,7 +40,8 @@ namespace App.Title
         public async void Push(string name)
         {
             await fade.FadeIn();
-            gameTimeRepository.Apply(new GameTimeData(DateTime.Now));
+            saveDataRepository.ApplyLoginTime();
+            gameTimeRepository.Apply(new GameTimeData(saveDataRepository.Get().LastLoginTime));
             IPresenter request = name switch
             {
                 "Title" => new TitlePresenter(this, new TitleModel(saveDataRepository), TitleView.Create()),
