@@ -1,7 +1,7 @@
+using App.Common;
 using Core;
 using Core.Presenter;
 using R3;
-using UnityEngine;
 
 namespace App.Title
 {
@@ -84,7 +84,8 @@ namespace App.Title
         {
             public override void Begin(TitlePresenter owner)
             {
-                
+                var scene = new SceneTransition();
+                scene.ChangeScene(SceneName.Title, SceneName.Home);
             }
         }
     }
