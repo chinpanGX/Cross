@@ -51,6 +51,14 @@ namespace Repository.SaveData
             profile = new PlayerProfile(userId, userName, beginGameTime, lastLoginTime); 
             Save(profile);
         }
+
+        public void ApplyLoginTime()
+        {
+            var distPlayerProfile =
+                new PlayerProfile(profile.UserId, profile.UserName, profile.BeginGameTime, DateTime.Now);
+            profile = distPlayerProfile;
+            Save(profile);
+        }
         
         public void Save(PlayerProfile source)
         {

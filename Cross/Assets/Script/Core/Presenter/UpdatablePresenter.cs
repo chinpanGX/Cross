@@ -1,5 +1,7 @@
 #nullable enable
 
+using UnityEngine;
+
 namespace Core.Presenter
 {
     public class UpdatablePresenter
@@ -22,6 +24,7 @@ namespace Core.Presenter
         public void Set(IPresenter presenter)
         {
             request = presenter;
+            Debug.Log(nameof(request));
         }
     }
 }

@@ -1,4 +1,5 @@
-#nullable enable
+﻿#nullable enable
+using System;
 using Common.UI;
 using Core;
 using Core.View;
@@ -6,26 +7,25 @@ using Script.App.Common;
 using UnityEngine;
 using Screen = Core.View.Screen;
 
-namespace App.Title
+namespace App.Title.Signup
 {
-    public class TitleView : MonoBehaviour, IView
+    public class SignupView : MonoBehaviour, IView
     {
         [SerializeField] private Canvas? canvas;
         [SerializeField] private CanvasGroup? canvasGroup;
-        [SerializeField] private UIButton? button;
+        [SerializeField] private UITextField? textField;
         private static Screen Screen => ComponentLocator.Get<Screen>();
         public Canvas? Canvas => canvas;
 
-        public static TitleView Create()
+        public static SignupView Create()
         {
-            return Instantiate(Resources.Load<TitleView>("View/TitleView"));
+            return Instantiate(Resources.Load<SignupView>($"View/SampleView"));
         }
         
         public void Push()
         {
             Screen.Push(this);
         }
-        
         public void Pop()
         {
             Screen.Pop();
@@ -40,6 +40,14 @@ namespace App.Title
         public void Close()
         {
             Destroy(gameObject);
+        }
+
+        public void OnRegisterUser(Action onResisterUser)
+        {
+            if (textField != null)
+            {
+                textField.Button.SetupSafe(onResisterUser);    
+            }
         }
     }
 }

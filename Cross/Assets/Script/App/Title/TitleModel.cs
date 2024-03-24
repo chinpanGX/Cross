@@ -1,12 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Core.Model;
-using Core.SaveData;
 using R3;
 using Repository.SaveData;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace App.Title
 {
@@ -19,7 +13,7 @@ namespace App.Title
         }
         
         private readonly Subject<TransitionState> transitionState = new();
-        private ISaveDataRepository repository;
+        private readonly ISaveDataRepository repository;
 
         public Observable<TransitionState> OnTransitionState => transitionState;
 

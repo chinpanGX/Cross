@@ -41,9 +41,14 @@ namespace App.Title
             readonly CancellationDisposable cancellationDisposable = new ();
             public override void Begin(TitlePresenter owner)
             {
+                var view = owner.View;
                 var model = owner.Model;
                 model.OnTransitionState.Subscribe(state => TransitionState(state, owner))
                     .RegisterTo(cancellationDisposable.Token);
+                
+                view.Push();
+                view.Open();
+                
                 model.Execute();
             }
 
@@ -70,7 +75,7 @@ namespace App.Title
         {
             public override void Begin(TitlePresenter owner)
             {
-                
+                owner.Director.Push("Signup");
             }
         }
 
