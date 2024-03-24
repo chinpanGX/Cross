@@ -35,8 +35,9 @@ namespace App.Title
             this.UpdateAsObservable().Subscribe(_ => updatablePresenter.Execute()).AddTo(gameObject);
         }
 
-        public void Push(string name)
+        public async void Push(string name)
         {
+            await fade.FadeIn();
             gameTimeRepository.Apply(new GameTimeData(DateTime.Now));
             IPresenter request = name switch
             {
@@ -45,6 +46,7 @@ namespace App.Title
                 _ => null!
             };
             updatablePresenter.Set(request);
+            await fade.FadeOut();
         }
     }
 }

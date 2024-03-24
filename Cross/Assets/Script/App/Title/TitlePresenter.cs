@@ -76,8 +76,6 @@ namespace App.Title
         {
             public override void Begin(TitlePresenter owner)
             {
-                owner.View.Close();
-                owner.View.Pop();
                 owner.Director.Push("Signup");
             }
         }
