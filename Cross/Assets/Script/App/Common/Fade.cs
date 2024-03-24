@@ -13,6 +13,7 @@ namespace App.Common
         
         public async UniTask FadeIn()
         {
+            transform.SetAsLastSibling();
             await fadeCanvasGroup.DOFade(1f, durationSecond);
         }
 
@@ -23,6 +24,7 @@ namespace App.Common
 
         public void BlackOut()
         {
+            transform.SetAsLastSibling();
             fadeCanvasGroup.alpha = 1;
         }
     }

@@ -1,6 +1,7 @@
 using Core;
 using Core.Presenter;
 using R3;
+using UnityEngine;
 
 namespace App.Title
 {
@@ -46,10 +47,10 @@ namespace App.Title
                 model.OnTransitionState.Subscribe(state => TransitionState(state, owner))
                     .RegisterTo(cancellationDisposable.Token);
                 
+                view.OnTapNext(model.Execute);
+                
                 view.Push();
                 view.Open();
-                
-                model.Execute();
             }
 
             public override void End(TitlePresenter owner)
@@ -75,6 +76,8 @@ namespace App.Title
         {
             public override void Begin(TitlePresenter owner)
             {
+                owner.View.Close();
+                owner.View.Pop();
                 owner.Director.Push("Signup");
             }
         }

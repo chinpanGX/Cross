@@ -1,4 +1,5 @@
-﻿using Core;
+﻿#nullable enable
+using Core;
 using Core.Presenter;
 using R3;
 
@@ -17,17 +18,18 @@ namespace App.Title.Signup
             Model = model;
             View = view;
             StateMachine = new StateMachine<SignupPresenter>(this);
+            StateMachine.Change<StateInit>();
         }
         
         public void Dispose()
         {
-            Director = null;
+            Director = null!;
             View.Pop();
-            View = null;
+            View = null!;
             Model.Dispose();
-            Model = null;
+            Model = null!;
             StateMachine.Dispose();
-            StateMachine = null;
+            StateMachine = null!;
         }
 
         public void Execute()
@@ -41,9 +43,8 @@ namespace App.Title.Signup
 
             public override void Begin(SignupPresenter owner)
             {
-                owner.View.Push();
-                
-                
+                var view = owner.View;
+                view.Push();
             }
         }
     }

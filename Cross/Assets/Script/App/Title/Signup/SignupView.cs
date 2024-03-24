@@ -19,7 +19,7 @@ namespace App.Title.Signup
 
         public static SignupView Create()
         {
-            return Instantiate(Resources.Load<SignupView>($"View/SampleView"));
+            return Instantiate(Resources.Load<SignupView>("View/SignupView"));
         }
         
         public void Push()

@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 15063450826537000}
   - component: {fileID: 231486508303620740}
   - component: {fileID: 1550114684553751991}
+  - component: {fileID: 5263117931289794171}
   - component: {fileID: 4928501785380779452}
   m_Layer: 5
   m_Name: TitleView
@@ -180,6 +181,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &5263117931289794171
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204962889997797695}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &4928501785380779452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7561fc62d7e4cc7ada1cb9fedc2a68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 15063450826537000}
+  canvasGroup: {fileID: 5263117931289794171}
+  button: {fileID: 88424178681764352}
 --- !u!1001 &1423305854502847490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,6 +491,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62eb4817c6bd09443b3d106f18d85457, type: 3}
+--- !u!114 &88424178681764352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8336893840313268322, guid: 62eb4817c6bd09443b3d106f18d85457, type: 3}
+  m_PrefabInstance: {fileID: 8253054762755449442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636de03c4aabde5449c2e524264a8dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3068293811732178185 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6349083043465070443, guid: 62eb4817c6bd09443b3d106f18d85457, type: 3}

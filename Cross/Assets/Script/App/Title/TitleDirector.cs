@@ -5,10 +5,12 @@ using Core;
 using Core.Director;
 using Core.Presenter;
 using Core.SaveData;
+using Cysharp.Threading.Tasks;
 using MasterData;
 using Repository.GameTime;
 using UnityEngine;
 using R3;
+using R3.Triggers;
 using Repository.SaveData;
 
 namespace App.Title
@@ -28,16 +30,14 @@ namespace App.Title
             var loginRefreshTimeData =
                 new LoginRefreshTimeData(loginMaster.RefreshLoginHour, loginMaster.RefreshLoginMinute, loginMaster.RefreshLoginSecond);
             gameTimeRepository = new GameTimeLocalRepository(loginRefreshTimeData);
-            gameTimeRepository.OnRefreshLogin.Subscribe(_ => Debug.Log("日付更新"));
             saveDataRepository = new PlayerProfileSaveDataLocalRepository(new EncryptedPlayerPrefs());
             Push("Title");
+            this.UpdateAsObservable().Subscribe(_ => updatablePresenter.Execute()).AddTo(gameObject);
         }
 
-        public async void Push(string name)
+        public void Push(string name)
         {
-            await fade.FadeIn();
             gameTimeRepository.Apply(new GameTimeData(DateTime.Now));
-            
             IPresenter request = name switch
             {
                 "Title" => new TitlePresenter(this, new TitleModel(saveDataRepository), TitleView.Create()),
@@ -45,9 +45,6 @@ namespace App.Title
                 _ => null!
             };
             updatablePresenter.Set(request);
-            await fade.FadeOut(); 
         }
     }
-
-
 }

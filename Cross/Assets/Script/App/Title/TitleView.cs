@@ -1,4 +1,5 @@
 #nullable enable
+using System;
 using Common.UI;
 using Core;
 using Core.View;
@@ -40,6 +41,11 @@ namespace App.Title
         public void Close()
         {
             Destroy(gameObject);
+        }
+
+        public void OnTapNext(Action onChangeTransitionState)
+        {
+            button.SetupSafe(onChangeTransitionState);
         }
     }
 }
