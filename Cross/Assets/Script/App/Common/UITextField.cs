@@ -15,10 +15,8 @@ public class UITextField : MonoBehaviour, IDisposable
     public UIText? Title => title;
     public UIButton? Button => button;
 
-    public void Setup(string titleText, Action onClickButton)
+    public void Setup(Action<string> onClickButton)
     {
-        title.SetTextSafe(titleText);
-        
         button.SetInteractableSafe(false);
         
         if (inputField != null)
@@ -28,7 +26,16 @@ public class UITextField : MonoBehaviour, IDisposable
                 button.SetInteractableSafe(!string.IsNullOrEmpty(text));
             }).AddTo(disposable);
         }
-        button.SetupSafe(onClickButton);
+
+        string GetTextSafe()
+        {
+            if (inputField != null)
+            {
+                return inputField.text;
+            }
+            return "";
+        }
+        button.SetupSafe(() => onClickButton.Invoke(GetTextSafe()));
     }
 
     public void SetTitle(string text)

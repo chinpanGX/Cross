@@ -12,7 +12,7 @@ namespace Test.Title
             var profile = new TestPlayerProfile();
             profile.Register();
             var a = profile.Save();
-            var b = profile.UserName + "," + profile.UserId + "," + profile.BeginGameTime.ToShortString() + "," + profile.LastLoginTime.ToShortString(); 
+            var b = profile.UserName + "," + profile.UserId + "," + profile.BeginGameTime + "," + profile.LastLoginTime; 
             Assert.That(a, Is.EqualTo(b));
         }
 
@@ -23,11 +23,14 @@ namespace Test.Title
             profile.Register();
             var info = profile.Save();
             var word = info.Split(",");
-            var date = new DateTime(2024, 3, 12, 12, 30, 0).ToShortString();
+            var date = new DateTime(2024, 3, 12, 12, 30, 0);
             Assert.That(word[0], Is.EqualTo("Test"));
             Assert.That(word[1], Is.EqualTo("36eea745-c142-469e-9105-b422a3f55914"));
-            Assert.That(word[2], Is.EqualTo(date));
-            Assert.That(word[3], Is.EqualTo(date));
+
+            var time = DateTime.Parse(word[2]);
+            var time2 = DateTime.Parse(word[3]);
+            Assert.That(time, Is.EqualTo(date));
+            Assert.That(time2, Is.EqualTo(date));
         }
     }
 
@@ -49,7 +52,7 @@ namespace Test.Title
 
         public string Save()
         {
-            var registerValue = UserName + "," + UserId + "," + BeginGameTime.ToShortString() + "," + LastLoginTime.ToShortString();
+            var registerValue = UserName + "," + UserId + "," + BeginGameTime + "," + LastLoginTime;
             return registerValue;
         }
     }

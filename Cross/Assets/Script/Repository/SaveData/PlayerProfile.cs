@@ -26,8 +26,7 @@ namespace App.Title
         
         public string ToSaveText()
         {
-            var registerValue = UserId + "," + UserName + "," + BeginGameTime.ToShortString() + "," +
-                                LastLoginTime.ToShortString();
+            var registerValue = UserId + "," + UserName + "," + BeginGameTime + "," + LastLoginTime;
             return registerValue;
         }
     }

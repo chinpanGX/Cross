@@ -116,6 +116,7 @@ namespace Core.SaveData
         public static void Delete()
         {
             PlayerPrefs.DeleteAll();
+            Debug.Log("削除");
         }
 #endif           
     }

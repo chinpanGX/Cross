@@ -42,11 +42,11 @@ namespace App.Title.Signup
             Destroy(gameObject);
         }
 
-        public void OnRegisterUser(Action onResisterUser)
+        public void OnRegisterUser(Action<string> onResisterUser)
         {
             if (textField != null)
             {
-                textField.Button.SetupSafe(onResisterUser);    
+                textField.Setup(onResisterUser);    
             }
         }
     }

@@ -4,9 +4,9 @@ namespace App.Partial
 {
     public static class DateTimeExtension
     {
-        public static string ToShortString(this DateTime dateTime)
+        public static string ToString(this DateTime dateTime)
         {
-            return dateTime.ToShortDateString() + dateTime.ToShortTimeString();
+            return dateTime.ToString("yyyy/MM/dd HH:mm:ss");
         }
     }
 }

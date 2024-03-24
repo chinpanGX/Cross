@@ -44,7 +44,11 @@ namespace App.Title.Signup
             public override void Begin(SignupPresenter owner)
             {
                 var view = owner.View;
+                var model = owner.Model;
+                view.OnRegisterUser((text) => model.Register(text));
+                
                 view.Push();
+                view.Open();
             }
         }
     }

@@ -40,8 +40,6 @@ namespace App.Title
         public async void Push(string name)
         {
             await fade.FadeIn();
-            saveDataRepository.ApplyLoginTime();
-            gameTimeRepository.Apply(new GameTimeData(saveDataRepository.Get().LastLoginTime));
             IPresenter request = name switch
             {
                 "Title" => new TitlePresenter(this, new TitleModel(saveDataRepository), TitleView.Create()),

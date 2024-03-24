@@ -30,7 +30,7 @@ namespace App.Title
 
         public void Execute()
         {
-            if (repository.Load())
+            if (repository.UserRegistered)
             {
                 transitionState.OnNext(TransitionState.Home);
             }
